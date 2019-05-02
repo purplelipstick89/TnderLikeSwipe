@@ -18,7 +18,8 @@ class ViewController: UIViewController {
     @IBAction func panGestureValueChanged(_ sender: UIPanGestureRecognizer) {
         let cardView = sender.view!
         let translationPoint = sender.translation(in: view)
-        cardView.center = CGPoint(x: view.center.x+translationPoint.x, y: view.center.y+translationPoint.y) 
+        cardView.center = CGPoint(x: view.center.x+translationPoint.x, y: view.center.y+translationPoint.y)
+        
     }
     
 }
