@@ -10,28 +10,60 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var cardView: UIView!
-    @IBOutlet weak var missed: UILabel!
-    @IBOutlet weak var present: UILabel!
+    @IBOutlet weak var cardView: CardView!
+    @IBOutlet weak var secondCardView: CardView!
+    
+    var pessoas = [
+        Pessoas(nomeLabel: "Ailton Junior", imageName: "Image1.jpg", turnoLabel: "Tarde"),
+        Pessoas(nomeLabel: "Ailton Junior", imageName: "Image2.jpg", turnoLabel: "Tarde"),
+        Pessoas(nomeLabel: "Ailton Junior", imageName: "Image3.jpg", turnoLabel: "Tarde"),
+    ]
+    
+    var pessoaVisible = 0
+    
+    var originalPosition : CGPoint!
+    
+    func updateCards(){
+        if pessoaVisible < pessoas.count {
+            cardView.center = originalPosition
+            cardView.transform = .identity
+            cardView.hideReactions()
+            cardView.updateCardView(pessoa: pessoas[pessoaVisible])
+            
+            if pessoaVisible < pessoas.count - 1 {
+                secondCardView.updateCardView(pessoa: pessoas[pessoaVisible + 1])
+            } else {
+                secondCardView.isHidden = true
+            }
+        }
+    }
+    
     var divisionParam: CGFloat!
-    @IBOutlet weak var imageUIImageView: UIImageView!
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        // Responsável por arrendodar as bordas da UIView
-        cardView.clipsToBounds = true
-        cardView.layer.cornerRadius = 5
-        
         divisionParam = (view.frame.size.width/2)/0.61
         
-        imageUIImageView.image = UIImage(named: "Image\(arc4random_uniform(50) + 1).jpg")
+        originalPosition = cardView.center
+        updateCards()
+
     }
     
+    func moveLeft(){
+        self.pessoaVisible += 1
+        self.updateCards()
+    }
+    
+    func moveRight(){
+        self.pessoaVisible += 1
+        self.updateCards()
+    }
     
     @IBAction func panGestureValueChanged(_ sender: UIPanGestureRecognizer) {
-        let cardView = sender.view!
+        let cardView = sender.view! as! CardView
         let translationPoint = sender.translation(in: view)
         cardView.center = CGPoint(x: view.center.x+translationPoint.x, y: view.center.y+translationPoint.y)
         
@@ -39,38 +71,46 @@ class ViewController: UIViewController {
             if cardView.center.x < 20 { // Moved to left
                 UIView.animate(withDuration: 0.3, animations: {
                     cardView.center = CGPoint(x: cardView.center.x-200, y: cardView.center.y)
-                })
+                }) { _ in
+                    self.moveLeft()
+                }
                 return
             }
             else if (cardView.center.x > (view.frame.size.width-20)) { // Moved to right
                 UIView.animate(withDuration: 0.3, animations: {
                     cardView.center = CGPoint(x: cardView.center.x+200, y: cardView.center.y)
-                })
+                }) { _ in
+                    self.moveRight()
+                }
                 return
             }
             
             UIView.animate(withDuration: 0.2, animations: {
                 cardView.center = self.view.center
-                self.missed.alpha = 0
-                self.present.alpha = 0
+               cardView.hideReactions()
             })
         }
+        
         let distanceMoved = cardView.center.x - view.center.x
         if distanceMoved > 0 { // moved right side
-            present.alpha = abs(distanceMoved)/view.center.x
-            missed.alpha = 0
+            cardView.presentALpha(alpha: abs(distanceMoved)/view.center.x)
+           
+            
         }
         else { // moved left side
-            missed.alpha = abs(distanceMoved)/view.center.x
-            present.alpha = 0
+            cardView.missedALpha(alpha: abs(distanceMoved)/view.center.x)
+            
         }
         
-        cardView.transform = CGAffineTransform(rotationAngle: 0.61)
+        cardView.transform = CGAffineTransform(rotationAngle: distanceMoved/divisionParam)
     }
-    @IBAction func superLike(_ sender: Any) {
-        UIView.animate(withDuration: 0.3, animations: {
-        self.cardView.center = CGPoint (x: self.cardView.center.x, y: self.cardView.center.y-1000)
-        })
-    }
+    
+//    @IBAction func superLike(_ sender: Any) {
+//        UIView.animate(withDuration: 0.3, animations: {
+//        self.cardView.center = CGPoint (x: self.cardView.center.x, y: self.cardView.center.y-1000)
+//        })
+//    }
+//    
+    
 }
 

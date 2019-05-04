@@ -14,6 +14,9 @@
 		3F2B67A0227B688200F46544 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F2B679E227B688200F46544 /* LaunchScreen.storyboard */; };
 		3F2B67AB227B688200F46544 /* TnderLikeSwipeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2B67AA227B688200F46544 /* TnderLikeSwipeTests.swift */; };
 		3F2B67B6227B688200F46544 /* TnderLikeSwipeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2B67B5227B688200F46544 /* TnderLikeSwipeUITests.swift */; };
+		3F9A6C18227CC13900C25072 /* CardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F9A6C17227CC13900C25072 /* CardView.xib */; };
+		3F9A6C1A227CC1C300C25072 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9A6C19227CC1C300C25072 /* CardView.swift */; };
+		3F9A6C56227E2E1700C25072 /* Pessoas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9A6C55227E2E1700C25072 /* Pessoas.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,9 @@
 		3F2B67B1227B688200F46544 /* TnderLikeSwipeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TnderLikeSwipeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F2B67B5227B688200F46544 /* TnderLikeSwipeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TnderLikeSwipeUITests.swift; sourceTree = "<group>"; };
 		3F2B67B7227B688200F46544 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F9A6C17227CC13900C25072 /* CardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardView.xib; sourceTree = "<group>"; };
+		3F9A6C19227CC1C300C25072 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		3F9A6C55227E2E1700C25072 /* Pessoas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pessoas.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,11 +104,14 @@
 			isa = PBXGroup;
 			children = (
 				3F2B6795227B688100F46544 /* AppDelegate.swift */,
+				3F9A6C19227CC1C300C25072 /* CardView.swift */,
+				3F9A6C17227CC13900C25072 /* CardView.xib */,
 				3F2B6797227B688100F46544 /* ViewController.swift */,
 				3F2B6799227B688100F46544 /* Main.storyboard */,
 				3F2B679C227B688200F46544 /* Assets.xcassets */,
 				3F2B679E227B688200F46544 /* LaunchScreen.storyboard */,
 				3F2B67A1227B688200F46544 /* Info.plist */,
+				3F9A6C55227E2E1700C25072 /* Pessoas.swift */,
 			);
 			path = TnderLikeSwipe;
 			sourceTree = "<group>";
@@ -231,6 +240,7 @@
 			files = (
 				3F2B67A0227B688200F46544 /* LaunchScreen.storyboard in Resources */,
 				3F2B679D227B688200F46544 /* Assets.xcassets in Resources */,
+				3F9A6C18227CC13900C25072 /* CardView.xib in Resources */,
 				3F2B679B227B688100F46544 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -257,6 +267,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F2B6798227B688100F46544 /* ViewController.swift in Sources */,
+				3F9A6C1A227CC1C300C25072 /* CardView.swift in Sources */,
+				3F9A6C56227E2E1700C25072 /* Pessoas.swift in Sources */,
 				3F2B6796227B688100F46544 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
